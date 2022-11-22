@@ -18,6 +18,15 @@ interface Props {
 
 export const Form: React.FC <Props> = ({setInfo, setFormsSubmitted, num, value, placeholder}) => {
   const [val, setVal] = React.useState('');
+  const submitCount = () => {
+    setFormsSubmitted(prev => {
+      if ( [...prev].includes(num)) {
+        return [...prev];
+      } else {
+        return [...prev, num];
+      }
+    });
+  }
   return (
     <div>
       <form 
@@ -32,17 +41,12 @@ export const Form: React.FC <Props> = ({setInfo, setFormsSubmitted, num, value, 
             return copy;
           });
           setVal('');
-          setFormsSubmitted(prev => {
-            if ( [...prev].includes(num)) {
-              return [...prev];
-            } else {
-              return [...prev, num];
-            }
-          });
+          submitCount();
         }}
         onReset={() => {
           setVal('');
-          setInfo(prev => ({...prev, val: ''}))
+          setInfo(prev => ({...prev, val: ''}));
+          submitCount();
         }}
       >
       <input 
