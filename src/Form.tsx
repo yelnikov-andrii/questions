@@ -31,6 +31,7 @@ export const Form: React.FC <Props> = ({setInfo, setFormsSubmitted, num, value, 
             copy[key] = val;
             return copy;
           });
+          setVal('');
           setFormsSubmitted(prev => {
             if ( [...prev].includes(num)) {
               return [...prev];
@@ -47,6 +48,7 @@ export const Form: React.FC <Props> = ({setInfo, setFormsSubmitted, num, value, 
       <input 
           placeholder={placeholder}
           className='border border-teal-600 rounded-sm p-2 font-semibold mr-10 w-80'
+          value={val}
           onChange={(e) => {
             setVal(e.target.value);
           }}

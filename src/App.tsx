@@ -37,7 +37,7 @@ function App() {
           setFormsSubmitted={setFormsSubmitted} 
           num="2" 
           value="city"
-          placeholder="Твій улюблений вид спорту?"
+          placeholder="З якого ти міста?"
         />
         <Form 
           setInfo={setInfo} 

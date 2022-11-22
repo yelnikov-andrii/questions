@@ -42,8 +42,8 @@ export const Info: React.FC <Props> = ({info}) => {
 
   const currentTime = new Date();
   return (
-    <ul>
-      <li>
+    <ul className='border border-slate-500 p-3 rounded-sm'>
+      <li className='mb-4 text-lg'>
         {isNaN(+info.year) ? (
           <span>
             Ви ввели некоректне число
@@ -59,14 +59,14 @@ export const Info: React.FC <Props> = ({info}) => {
           </span>
         )}
       </li>
-      <li>
+      <li className='mb-4 text-lg'>
         {info.city === '' ? (
           <span>
             Ви не захотіли відповідати на це питання
           </span>
         ) : countries.some(country => country.city.toLowerCase() === info.city.toLowerCase()) ? (
           <span>
-            Ти живеш у столиці {countries.find(country => country.city === info.city)?.name}?
+            Ти живеш у столиці {countries.find(country => country.city.toLowerCase() === info.city.toLowerCase())?.name}?
           </span>
         ) : (
           <span>
@@ -74,14 +74,14 @@ export const Info: React.FC <Props> = ({info}) => {
           </span>
         )}
       </li>
-      <li>
+      <li className='text-lg'>
         {info.sport === '' ? (
           <span>
             Ви не захотіли відповідати на це питання
           </span>
-        ) : sports.some(sport => sport.name === info.sport) ? (
+        ) : sports.some(sport => sport.name.toLowerCase() === info.sport.toLowerCase()) ? (
           <span>
-            Ти хочеш бути таким як {sports.find(sport => sport.name.toLowerCase() === info.sport.toLowerCase())?.person} ?
+            Ти хочеш стати таким як {sports.find(sport => sport.name.toLowerCase() === info.sport.toLowerCase())?.person} ?
           </span>
         ) : (
           <span>
